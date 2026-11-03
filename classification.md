@@ -1,0 +1,49 @@
+Act as a Senior Python ML Engineer. Write a complete, self-contained, runnable Python script for a REGRESSION scenario.
+
+[EXAM QUESTION]:
+"Paste the 2-3 sentence question here"
+
+Generate code following this STRICT 4-PART SPECIFICATION to satisfy the 40-mark rubric:
+
+# --- SECTION 1: DATA ACQUISITION & EDA (10 MARKS) ---
+- Set np.random.seed(42).
+- Generate a pandas DataFrame 'df' of 300 rows with 4 realistic domain features based on the question (e.g., feature1, feature2, feature3, feature4) and 1 continuous numeric target variable 'target'. Add realistic linear/non-linear correlation and random noise (np.random.normal).
+- Inject 5 np.nan values into one column and impute them using SimpleImputer(strategy='median').
+- Print df.shape, df.info(), df.describe(), and df.isnull().sum().
+- Plot a 1x2 matplotlib subplot:
+  Subplot 1: sns.histplot(df['target'], kde=True) with title "Target Distribution".
+  Subplot 2: sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f') with title "Correlation Matrix".
+  plt.tight_layout(); plt.show().
+
+# --- SECTION 2: BASELINE MODEL IMPLEMENTATION (10 MARKS) ---
+- Define X = df.drop(columns=['target']) and y = df['target'].
+- Preprocess X using StandardScaler.
+- Split data using train_test_split(X, y, test_size=0.2, random_state=42).
+- Instantiate and fit baseline LinearRegression() on X_train and y_train.
+- Print "Baseline Linear Regression model trained successfully."
+
+# --- SECTION 3: MODEL EVALUATION (10 MARKS) ---
+- Generate predictions: y_pred = baseline_model.predict(X_test).
+- Calculate and print:
+  * MAE: mean_absolute_error(y_test, y_pred)
+  * MSE: mean_squared_error(y_test, y_pred)
+  * RMSE: np.sqrt(mean_squared_error(y_test, y_pred))
+  * R2 Score: r2_score(y_test, y_pred)
+- Plot 1x2 subplot:
+  Subplot 1: plt.scatter(y_test, y_pred, alpha=0.7) with ideal line plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--').
+  Subplot 2: Residual distribution sns.histplot(y_test - y_pred, kde=True).
+  plt.tight_layout(); plt.show().
+
+# --- SECTION 4: TECHNIQUE MODIFICATION (10 MARKS) ---
+- Technical upgrade: Replace Linear Regression with RandomForestRegressor(random_state=42).
+- Perform hyperparameter tuning using GridSearchCV with cv=3 on param_grid={'n_estimators': [50, 100], 'max_depth': [3, 6]}.
+- Fit grid on X_train, y_train. Evaluate best_estimator_ on X_test: y_mod_pred = best_model.predict(X_test).
+- Print a formatted comparison table:
+  print(f"{'Metric':<10} | {'Baseline (Linear)':<18} | {'Modified (Tuned RF)':<18}")
+  Compare RMSE and R2 Score before vs after.
+- Print 2 lines of technical justification: why Random Forest was chosen to capture non-linear relationships and interactions.
+
+OUTPUT CONSTRAINTS:
+- Output ONLY pure, executable Python code inside a single ```python code block.
+- Zero markdown explanations outside code comments.
+- ZERO placeholder comments ('# TODO', '...'). Include every import from sklearn, numpy, pandas, matplotlib, seaborn.

@@ -1,0 +1,70 @@
+Act as a Senior Python Machine Learning Engineer. Generate a complete, self-contained, runnable Python script for the given scenario-based ML exam question.
+
+[EXAM QUESTION]:
+A college wants to estimate students' final examination marks using attendance, internal
+assessment scores, assignment performance, and study hours. Historical student data is available for training a machine learning model. Suggest a suitable approach and identify the target variable and any three relevant input features.
+
+Your goal is to satisfy a 40-mark practical rubric through the following four sections. Adapt ALL technical decisions to the actual question. Never assume a particular ML algorithm or problem type.
+
+# SECTION 1: DATA ACQUISITION & EDA (10 MARKS)
+
+- Include all necessary imports.
+- Set random seeds to 42 wherever applicable.
+- Understand the scenario and identify the ML problem type, target variable (if applicable), and relevant input features.
+- If a dataset is supplied, load and use it. Otherwise, generate a realistic synthetic pandas DataFrame with approximately 300 rows and scenario-appropriate features.
+- Choose realistic data types, distributions, relationships and noise.
+- Introduce and handle a small number of missing values using an appropriate imputation strategy.
+- Print dataset shape, sample records, data types, descriptive statistics and missing-value counts.
+- Perform appropriate exploratory data analysis using relevant visualizations.
+- Apply suitable preprocessing, including encoding, scaling, transformation or outlier handling where necessary.
+- Do not apply irrelevant preprocessing techniques.
+
+# SECTION 2: BASELINE MODEL IMPLEMENTATION (10 MARKS)
+
+- Select an appropriate baseline algorithm based on the identified problem.
+- Identify features and target correctly. For unsupervised problems, do not invent target labels.
+- Split data appropriately wherever applicable.
+- Use suitable preprocessing and sklearn Pipeline/ColumnTransformer where appropriate.
+- Prevent data leakage by fitting preprocessing only on training data.
+- Train the baseline model and display relevant outputs.
+- Briefly justify the algorithm choice in code comments.
+
+# SECTION 3: MODEL EVALUATION (10 MARKS)
+
+Select evaluation methods appropriate to the problem:
+
+- Regression: MAE, MSE, RMSE, R².
+- Classification: confusion matrix, accuracy, precision, recall, F1-score and ROC-AUC where applicable.
+- Clustering: silhouette score, Davies-Bouldin score, Calinski-Harabasz score and appropriate cluster visualizations.
+- Anomaly detection: anomaly scores, selected threshold, flagged observations and relevant visualizations.
+- Use other appropriate evaluation techniques if the question requires them.
+- Do not use classification accuracy for clustering or apply irrelevant metrics.
+- Generate appropriate plots to demonstrate model performance.
+
+# SECTION 4: TECHNIQUE MODIFICATION & IMPROVEMENT (10 MARKS)
+
+- Establish a baseline before modifying the technique.
+- Identify a meaningful improvement based on the problem and baseline results.
+- Consider suitable approaches such as hyperparameter tuning, regularization, feature selection, dimensionality reduction, ensemble methods, alternative algorithms or algorithm-specific optimization.
+- Use GridSearchCV or another appropriate optimization method where relevant.
+- Keep evaluation fair and prevent data leakage.
+- Compare baseline and modified approaches using appropriate metrics.
+- Display a formatted comparison table wherever meaningful.
+- Explain the technical reason for the modification in concise code comments.
+- Never guarantee improvement or fabricate results. Report actual calculated results.
+
+# STRICT OUTPUT REQUIREMENTS
+
+- Output ONLY pure, executable Python code inside a single ```python code block.
+- Generate one complete script, not disconnected snippets.
+- Include every required import.
+- Use clear numbered section headings and concise comments.
+- No TODOs, placeholders, pseudocode or omitted code.
+- Use commonly available Python libraries: NumPy, Pandas, Matplotlib, Seaborn and Scikit-learn.
+- Keep computation manageable for a CPU-only environment.
+- Ensure correct syntax and consistent variable names.
+- Do not introduce unnecessary algorithms or complexity.
+- If the question contains specific requirements, follow them unless they conflict with correct ML methodology.
+- Never fabricate dataset results or model evaluation scores.
+
+FIRST identify the problem type from the question. THEN select the appropriate workflow, algorithms, preprocessing, evaluation metrics and improvement technique. Adapt the entire script to the question.
